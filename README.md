@@ -10,7 +10,8 @@ Een geavanceerd multi-agent samenwerkingsplatform waarin Frontend en Backend exp
 
 ### Huidige Functionaliteit
 
-**Geïntegreerde LLM-ondersteuning** met Ollama  
+**Geïntegreerde LLM-ondersteuning** met Ollama (Model: openchat:latest 4.1GB)
+
 **Drie gespecialiseerde agenten**:
 - Backend Developer (Mark) - Volledige backend functionaliteit
 - Frontend Developer (Sarah) - UI/UX en formulierverwerking
@@ -81,7 +82,7 @@ Een geavanceerd multi-agent samenwerkingsplatform waarin Frontend en Backend exp
 
 1. Kloon de repository:
    ```bash
-   git clone https://github.com/yourusername/llm_agents_chitchat.git
+   git clone https://github.com/90barricade93/llm_agents_chitchat.git
    cd llm_agents_chitchat
    ```
 
@@ -136,10 +137,11 @@ Voer alle tests uit met:
 pytest
 ```
 
-Voer tests met coverage rapportage uit:
+Voer tests met run_tests.py uit:
 ```bash
-pytest --cov=.
+python run_tests.py
 ```
+
 
 ## Bijdragen
 

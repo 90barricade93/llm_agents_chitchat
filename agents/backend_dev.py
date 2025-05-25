@@ -1,4 +1,5 @@
 from typing import List, Dict, Optional, Any
+from datetime import datetime
 from .base_agent import BaseAgent
 
 class BackendDeveloperAgent(BaseAgent):
@@ -84,13 +85,20 @@ class BackendDeveloperAgent(BaseAgent):
             }
             self.update_session_context(session_id, "laatste_activiteit", str(datetime.now()))
             
-            # Genereer een antwoord
-            response = super().generate_response(
+            # Haal de volledige conversatiegeschiedenis op
+            full_conversation = self.get_session_history(session_id)
+            
+            # Genereer een antwoord via de LLM
+            response = self.llm.generate_response(
                 session_id=session_id,
                 user_input=user_message,
                 system_prompt=system_prompt,
+                full_conversation=full_conversation,
                 max_history=10
             )
+            
+            # Voeg het antwoord toe aan de sessiegeschiedenis
+            self.add_to_session(session_id, "assistant", response)
             
             # Werk de context bij met informatie over dit antwoord
             self.update_session_context(
